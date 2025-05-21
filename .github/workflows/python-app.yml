@@ -39,7 +39,11 @@ jobs:
         ls -R
         echo ""
         echo "Contents of test_sample.py:"
-        cat test_sample.py || echo "test_sample.py not found!"
+        if [ -f test_sample.py ]; then
+          cat test_sample.py
+        else
+          echo "test_sample.py not found!"
+        fi
 
     - name: Test with pytest
       run: |
